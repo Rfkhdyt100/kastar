@@ -2,6 +2,12 @@
 <html>
 <head>
     <title>Kasir Pintar - @yield('title', 'Dashboard')</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    @stack('styles')
+    
     <style>
         * {
             margin: 0;
@@ -28,101 +34,6 @@
             padding: 20px;
         }
         
-        .sidebar-header {
-            padding: 15px 20px;
-            border-bottom: 1px solid #34495e;
-        }
-        
-        .sidebar-brand {
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .nav-item {
-            padding: 10px 20px;
-            margin: 5px 0;
-            cursor: pointer;
-        }
-        
-        .nav-item:hover {
-            background-color: #34495e;
-        }
-        
-        .nav-item a {
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .active {
-            background-color: #3498db;
-        }
-        
-        .content-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding: 15px;
-            background: white;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        
-        .btn {
-            padding: 8px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            display: inline-block;
-            cursor: pointer;
-            border: none;
-        }
-        
-        .btn-primary {
-            background-color: #3498db;
-            color: white;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        th {
-            background-color: #f8f9fa;
-            font-weight: bold;
-        }
-        
-        .btn-edit {
-            background-color: #3498db;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 3px;
-            margin-right: 5px;
-        }
-        
-        .btn-delete {
-            background-color: #e74c3c;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 3px;
-        }
     </style>
 </head>
 <body>
@@ -154,5 +65,11 @@
             @yield('content')
         </div>
     </div>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    @stack('scripts')
 </body>
 </html>

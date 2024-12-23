@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Pelanggan extends Model
 {
     use HasFactory; 
-    protected $primaryKey = 'id_pelanggan'; 
-    protected $fillable = [ 
+    protected $primaryKey = 'id_pelanggan'; // Match the primary key name in your database
+    
+    protected $fillable = [
         'nama_pelanggan', 
-        'alamat', 
-        'telepon', 
-        'email', ];
+        'email', 
+        'no_telepon', 
+        'alamat'
+    ];
         
 }
