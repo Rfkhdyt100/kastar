@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Edit Customer - Kasir Pintar</title>
+    <title>Edit Produk - Kasir Pintar</title>
     <style>
         .container {
             padding: 20px;
@@ -17,7 +17,7 @@
             font-weight: bold;
         }
         input[type="text"],
-        input[type="email"],
+        input[type="number"],
         textarea {
             width: 100%;
             padding: 8px;
@@ -56,62 +56,63 @@
 </head>
 <body>
     <div class="container">
-        <h1>Edit Customer</h1>
+        <h1>Edit Produk</h1>
 
-        <form action="{{ route('pelanggans.update', $pelanggan->id_pelanggan) }}" method="POST">
+        <form action="{{ route('produks.update', $produk->id_produk) }}" method="POST">
             @csrf
             @method('PUT')
             
             <div class="form-group">
-                <label for="nama">Name</label>
+                <label for="nama_produk">Nama Produk</label>
                 <input type="text" 
-                       id="nama" 
-                       name="nama" 
-                       value="{{ old('nama', $pelanggan->nama) }}" 
-                       class="@error('nama') is-invalid @enderror">
-                @error('nama')
+                       id="nama_produk" 
+                       name="nama_produk" 
+                       value="{{ old('nama_produk', $produk->nama_produk) }}" 
+                       class="@error('nama_produk') is-invalid @enderror">
+                @error('nama_produk')
                     <div class="error-message">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" 
-                       id="email" 
-                       name="email" 
-                       value="{{ old('email', $pelanggan->email) }}" 
-                       class="@error('email') is-invalid @enderror">
-                @error('email')
+                <label for="harga">Harga</label>
+                <input type="number" 
+                       id="harga" 
+                       name="harga" 
+                       value="{{ old('harga', $produk->harga) }}" 
+                       class="@error('harga') is-invalid @enderror">
+                @error('harga')
                     <div class="error-message">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="form-group">
-                <label for="no_telepon">Phone Number</label>
-                <input type="text" 
-                       id="no_telepon" 
-                       name="no_telepon" 
-                       value="{{ old('no_telepon', $pelanggan->no_telepon) }}" 
-                       class="@error('no_telepon') is-invalid @enderror">
-                @error('no_telepon')
+                <label for="stok">Stok</label>
+                <input type="number" 
+                       id="stok" 
+                       name="stok" 
+                       value="{{ old('stok', $produk->stok) }}" 
+                       class="@error('stok') is-invalid @enderror">
+                @error('stok')
                     <div class="error-message">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="form-group">
-                <label for="alamat">Address</label>
-                <textarea id="alamat" 
-                          name="alamat" 
-                          rows="4" 
-                          class="@error('alamat') is-invalid @enderror">{{ old('alamat', $pelanggan->alamat) }}</textarea>
-                @error('alamat')
+                <label for="id_kategori">ID Kategori</label>
+                <input type="number" 
+                       id="id_kategori" 
+                       name="id_kategori" 
+                       value="{{ old('id_kategori', $produk->id_kategori) }}" 
+                       class="@error('id_kategori') is-invalid @enderror">
+                @error('id_kategori')
                     <div class="error-message">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Update Customer</button>
-                <a href="{{ route('pelanggans.index') }}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Update Produk</button>
+                <a href="{{ route('produks.index') }}" class="btn btn-secondary">Cancel</a>
             </div>
         </form>
     </div>

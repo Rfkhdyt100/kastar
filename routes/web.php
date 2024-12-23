@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\ProdukController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,7 +21,8 @@ Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 
 
 //pelanggan
-// Route::resource('pelanggans', PelangganController::class);
+Route::resource('pelanggans', PelangganController::class);
+
 Route::get('/pelanggans', [PelangganController::class, 'index'])->name('pelanggans.index');
 Route::get('/pelanggans/create', [PelangganController::class, 'create'])->name('pelanggans.create');
 Route::post('/pelanggans', [PelangganController::class, 'store'])->name('pelanggans.store');
@@ -28,3 +30,8 @@ Route::get('/pelanggans/{id}/edit', [PelangganController::class, 'edit'])->name(
 Route::put('/pelanggans/{id}', [PelangganController::class, 'update'])->name('pelanggans.update');
 Route::delete('/pelanggans/{id}', [PelangganController::class, 'destroy'])->name('pelanggans.destroy');
 Route::get('/pelanggans/{id}', [PelangganController::class, 'show'])->name('pelanggans.show');
+
+
+//produk
+
+Route::resource('produks', ProdukController::class);

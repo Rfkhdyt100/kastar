@@ -7,14 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pelanggan extends Model
 {
-    use HasFactory; 
-    protected $primaryKey = 'id_pelanggan'; // Match the primary key name in your database
-    
+    protected $table = 'pelanggans';
+
+    protected $primaryKey = 'id_pelanggan';
+
     protected $fillable = [
-        'nama_pelanggan', 
-        'email', 
-        'no_telepon', 
-        'alamat'
+        'nama_pelanggan',
+        'email',
+        'telepon',
+        'alamat',
     ];
-        
+
+    public $timestamps = true;
+
 }
