@@ -9,7 +9,7 @@ class PelangganController extends Controller
 {
     public function index()
     {
-        $pelanggans = Pelanggan::all();
+        $pelanggans = Pelanggan::latest()->get();
         return view('pelanggans.index', compact('pelanggans'));
     }
 
@@ -21,50 +21,52 @@ class PelangganController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_pelanggan' => 'required|string|max:255',
-            'alamat' => 'required|string|max:255',
-            'telepon' => 'required|string|max:15',
-            'email' => 'required|string|email|max:255|unique:pelanggans',
+            'nama' => 'required|string|max:255',
+            'email' => 'required|email|unique:pelanggans',
+            'no_telepon' => 'required|string|max:15',
+            'alamat' => 'nullable|string'
         ]);
 
-        Pelanggan::create($request->all());
-
-        return redirect()->route('pelanggans.index')->with('success', 'Pelanggan created successfully.');
+        Pelanggan::create([ 
+            'nama' => $request->nama_pelanggan, 
+            'email' => $request->email, 
+            'no_telepon' => $request->no_telepon, 
+            'alamat' => $request->alamat ]); 
+            
+        return redirect()->route('pelanggans.index') 
+        ->with('success', 'Customer added successfully.'); 
     }
 
-    public function show($id)
+    public function edit(Pelanggan $pelanggan)
     {
-        $pelanggan = Pelanggan::findOrFail($id);
-        return view('pelanggans.show', compact('pelanggan'));
-    }
-
-    public function edit($id)
-    {
-        $pelanggan = Pelanggan::findOrFail($id);
         return view('pelanggans.edit', compact('pelanggan'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Pelanggan $pelanggan)
     {
         $request->validate([
             'nama_pelanggan' => 'required|string|max:255',
-            'alamat' => 'required|string|max:255',
-            'telepon' => 'required|string|max:15',
-            'email' => 'required|string|email|max:255|unique:pelanggans,email,' . $id . ',id_pelanggan',
+            'email' => 'required|email|unique:pelanggans,email,'.$pelanggan->id_pelanggan.',id_pelanggan',
+            'no_telepon' => 'required|string|max:15',
+            'alamat' => 'nullable|string'
         ]);
-
-        $pelanggan = Pelanggan::findOrFail($id);
-        $pelanggan->update($request->all());
-
-        return redirect()->route('pelanggans.index')->with('success', 'Pelanggan updated successfully.');
+    
+        $pelanggan->update([
+            'nama' => $request->nama_pelanggan,
+            'email' => $request->email,
+            'no_telepon' => $request->no_telepon,
+            'alamat' => $request->alamat
+        ]);
+    
+        return redirect()->route('pelanggans.index')
+            ->with('success', 'Customer updated successfully.');
     }
 
-    public function destroy($id)
+    public function destroy(Pelanggan $pelanggan)
     {
-        $pelanggan = Pelanggan::findOrFail($id);
         $pelanggan->delete();
-
-        return redirect()->route('pelanggans.index')->with('success', 'Pelanggan deleted successfully.');
+        return redirect()->route('pelanggans.index')
+            ->with('success', 'Customer deleted successfully.');
     }
 
 }
