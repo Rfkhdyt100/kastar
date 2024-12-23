@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\KategoriController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,3 +36,8 @@ Route::get('/pelanggans/{id}', [PelangganController::class, 'show'])->name('pela
 //produk
 
 Route::resource('produks', ProdukController::class);
+
+
+//kategori
+
+Route::resource('kategoris', KategoriController::class);

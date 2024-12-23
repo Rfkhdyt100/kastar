@@ -20,4 +20,8 @@ class Pelanggan extends Model
 
     public $timestamps = true;
 
+    // public function penjualans() { 
+    //     return $this->hasMany(Penjualan::class, 'id_pelanggan'); 
+    // }
+
 }

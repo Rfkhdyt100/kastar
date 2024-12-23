@@ -137,6 +137,10 @@
                     <a href="{{ route('produks.index') }}"> 
                         <i>📦</i> Produk </a> 
                 </div>
+                <div class="nav-item {{ request()->is('kategoris*') ? 'active' : '' }}"> 
+                    <a href="{{ route('kategoris.index') }}"> 
+                        <i>📂</i> Kategori </a> 
+                </div>
             </nav>
         </div>
 
