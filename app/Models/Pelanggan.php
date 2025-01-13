@@ -18,10 +18,13 @@ class Pelanggan extends Model
         'alamat',
     ];
 
-    public $timestamps = true;
-
-    // public function penjualans() { 
-    //     return $this->hasMany(Penjualan::class, 'id_pelanggan'); 
-    // }
+    public function penjualans() 
+    { 
+        return $this->hasMany(Penjualan::class, 'id_pelanggan', 'id_pelanggan'); 
+    } 
+    public function pembelis() 
+    { 
+        return $this->hasMany(Pembeli::class, 'custumor', 'id_pelanggan'); 
+    }
 
 }

@@ -1,119 +1,86 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Edit Customer - Kasir Pintar</title>
-    <style>
-        .container {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-        }
-        .btn {
-            padding: 8px 15px;
-            text-decoration: none;
-            display: inline-block;
-            margin: 2px;
-            border-radius: 3px;
-            cursor: pointer;
-            border: none;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            color: white;
-        }
-        .btn-secondary {
-            background-color: #6c757d;
-            color: white;
-        }
-        .error-message {
-            color: #dc3545;
-            font-size: 0.9em;
-            margin-top: -8px;
-            margin-bottom: 10px;
-        }
-        .is-invalid {
-            border-color: #dc3545;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Edit Customer</h1>
+@extends('layouts.app')
 
-        <form action="{{ route('pelanggans.update', $pelanggan->id_pelanggan) }}" method="POST">
-            @csrf
-            @method('PUT')
-            
-            <div class="form-group">
-                <label for="nama">Name</label>
-                <input type="text" 
-                       id="nama" 
-                       name="nama" 
-                       value="{{ old('nama', $pelanggan->nama) }}" 
-                       class="@error('nama') is-invalid @enderror">
-                @error('nama')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
-            </div>
+@section('title', 'Edit Pelanggan')
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" 
-                       id="email" 
-                       name="email" 
-                       value="{{ old('email', $pelanggan->email) }}" 
-                       class="@error('email') is-invalid @enderror">
-                @error('email')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
+@section('content')
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h3 class="text-center my-4">Edit Pelanggan</h3>
+                <hr>
             </div>
+            <div class="card border-0 shadow-sm rounded">
+                <div class="card-body">
+                    <form action="{{ route('pelanggans.update', $pelanggan->id_pelanggan) }}" method="POST">
+                        @csrf
+                        @method('PUT')
 
-            <div class="form-group">
-                <label for="no_telepon">Phone Number</label>
-                <input type="text" 
-                       id="no_telepon" 
-                       name="no_telepon" 
-                       value="{{ old('no_telepon', $pelanggan->no_telepon) }}" 
-                       class="@error('no_telepon') is-invalid @enderror">
-                @error('no_telepon')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
-            </div>
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="nama_pelanggan">Nama Pelanggan</label>
+                            <input type="text" 
+                                   id="nama_pelanggan" 
+                                   name="nama_pelanggan" 
+                                   value="{{ old('nama_pelanggan', $pelanggan->nama_pelanggan) }}" 
+                                   class="form-control @error('nama_pelanggan') is-invalid @enderror" 
+                                   placeholder="Nama Pelanggan">
+                            @error('nama_pelanggan')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
-            <div class="form-group">
-                <label for="alamat">Address</label>
-                <textarea id="alamat" 
-                          name="alamat" 
-                          rows="4" 
-                          class="@error('alamat') is-invalid @enderror">{{ old('alamat', $pelanggan->alamat) }}</textarea>
-                @error('alamat')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
-            </div>
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="email">Email</label>
+                            <input type="email" 
+                                   id="email" 
+                                   name="email" 
+                                   value="{{ old('email', $pelanggan->email) }}" 
+                                   class="form-control @error('email') is-invalid @enderror" 
+                                   placeholder="Email">
+                            @error('email')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Update Customer</button>
-                <a href="{{ route('pelanggans.index') }}" class="btn btn-secondary">Cancel</a>
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="telepon">Nomor Telepon</label>
+                            <input type="text" 
+                                   id="telepon" 
+                                   name="telepon" 
+                                   value="{{ old('telepon', $pelanggan->telepon) }}" 
+                                   class="form-control @error('telepon') is-invalid @enderror" 
+                                   placeholder="Nomor Telepon">
+                            @error('telepon')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="alamat">Alamat</label>
+                            <textarea id="alamat" 
+                                      name="alamat" 
+                                      rows="4" 
+                                      class="form-control @error('alamat') is-invalid @enderror" 
+                                      placeholder="Alamat">{{ old('alamat', $pelanggan->alamat) }}</textarea>
+                            @error('alamat')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
+                        <button type="reset" class="btn btn-md btn-warning">RESET</button>
+                    </form>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
-</body>
-</html>
+</div>
+@endsection

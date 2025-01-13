@@ -12,8 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('stoks', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id('id_stok'); 
+            $table->unsignedBigInteger('id_produk'); 
+            $table->date('tanggal_update_stok'); 
+            $table->integer('stok_awal'); 
+            $table->integer('stok_akhir'); 
+            $table->text('keterangan')->nullable(); 
+            $table->timestamps(); 
+            
+            $table->foreign('id_produk')->references('id_produk')->on('produks')->onDelete('cascade');
         });
     }
 

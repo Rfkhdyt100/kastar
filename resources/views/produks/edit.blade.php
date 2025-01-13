@@ -1,120 +1,87 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Edit Produk - Kasir Pintar</title>
-    <style>
-        .container {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input[type="text"],
-        input[type="number"],
-        textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-        }
-        .btn {
-            padding: 8px 15px;
-            text-decoration: none;
-            display: inline-block;
-            margin: 2px;
-            border-radius: 3px;
-            cursor: pointer;
-            border: none;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            color: white;
-        }
-        .btn-secondary {
-            background-color: #6c757d;
-            color: white;
-        }
-        .error-message {
-            color: #dc3545;
-            font-size: 0.9em;
-            margin-top: -8px;
-            margin-bottom: 10px;
-        }
-        .is-invalid {
-            border-color: #dc3545;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Edit Produk</h1>
+@extends('layouts.app')
 
-        <form action="{{ route('produks.update', $produk->id_produk) }}" method="POST">
-            @csrf
-            @method('PUT')
-            
-            <div class="form-group">
-                <label for="nama_produk">Nama Produk</label>
-                <input type="text" 
-                       id="nama_produk" 
-                       name="nama_produk" 
-                       value="{{ old('nama_produk', $produk->nama_produk) }}" 
-                       class="@error('nama_produk') is-invalid @enderror">
-                @error('nama_produk')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
-            </div>
+@section('title', 'Edit Produk')
 
-            <div class="form-group">
-                <label for="harga">Harga</label>
-                <input type="number" 
-                       id="harga" 
-                       name="harga" 
-                       value="{{ old('harga', $produk->harga) }}" 
-                       class="@error('harga') is-invalid @enderror">
-                @error('harga')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
+@section('content')
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h3 class="text-center my-4">Edit Produk</h3>
+                <hr>
             </div>
+            <div class="card border-0 shadow-sm rounded">
+                <div class="card-body">
+                    <form action="{{ route('produks.update', $produk->id_produk) }}" method="POST">
+                        @csrf
+                        @method('PUT')
 
-            <div class="form-group">
-                <label for="stok">Stok</label>
-                <input type="number" 
-                       id="stok" 
-                       name="stok" 
-                       value="{{ old('stok', $produk->stok) }}" 
-                       class="@error('stok') is-invalid @enderror">
-                @error('stok')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
-            </div>
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="nama_produk">Nama Produk</label>
+                            <input type="text" 
+                                   id="nama_produk" 
+                                   name="nama_produk" 
+                                   value="{{ old('nama_produk', $produk->nama_produk) }}" 
+                                   class="form-control @error('nama_produk') is-invalid @enderror" 
+                                   placeholder="Nama Produk">
+                            @error('nama_produk')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
-            <div class="form-group">
-                <label for="id_kategori">ID Kategori</label>
-                <input type="number" 
-                       id="id_kategori" 
-                       name="id_kategori" 
-                       value="{{ old('id_kategori', $produk->id_kategori) }}" 
-                       class="@error('id_kategori') is-invalid @enderror">
-                @error('id_kategori')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
-            </div>
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="harga">Harga</label>
+                            <input type="number" 
+                                   id="harga" 
+                                   name="harga" 
+                                   value="{{ old('harga', $produk->harga) }}" 
+                                   class="form-control @error('harga') is-invalid @enderror" 
+                                   placeholder="Harga">
+                            @error('harga')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Update Produk</button>
-                <a href="{{ route('produks.index') }}" class="btn btn-secondary">Cancel</a>
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="stok">Stok</label>
+                            <input type="number" 
+                                   id="stok" 
+                                   name="stok" 
+                                   value="{{ old('stok', $produk->stok) }}" 
+                                   class="form-control @error('stok') is-invalid @enderror" 
+                                   placeholder="Stok">
+                            @error('stok')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="id_kategori">ID Kategori</label>
+                            <input type="number" 
+                                   id="id_kategori" 
+                                   name="id_kategori" 
+                                   value="{{ old('id_kategori', $produk->id_kategori) }}" 
+                                   class="form-control @error('id_kategori') is-invalid @enderror" 
+                                   placeholder="ID Kategori">
+                            @error('id_kategori')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
+                        <button type="reset" class="btn btn-md btn-warning">RESET</button>
+                    </form>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
-</body>
-</html>
+</div>
+@endsection

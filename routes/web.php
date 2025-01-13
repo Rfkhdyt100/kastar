@@ -5,6 +5,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\StokController;
+use App\Http\Controllers\DiskonController;
+use App\Http\Controllers\ShiftController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,3 +44,16 @@ Route::resource('produks', ProdukController::class);
 //kategori
 
 Route::resource('kategoris', KategoriController::class);
+
+
+//stok
+
+Route::resource('stoks', StokController::class);
+
+// diskon
+
+Route::resource('diskons', DiskonController::class);
+
+// shift
+
+Route::resource('shifts', ShiftController::class);

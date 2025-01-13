@@ -1,83 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Edit Kategori - Kasir Pintar</title>
-    <style>
-        .container {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input[type="text"],
-        textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-        }
-        .btn {
-            padding: 8px 15px;
-            text-decoration: none;
-            display: inline-block;
-            margin: 2px;
-            border-radius: 3px;
-            cursor: pointer;
-            border: none;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            color: white;
-        }
-        .btn-secondary {
-            background-color: #6c757d;
-            color: white;
-        }
-        .error-message {
-            color: #dc3545;
-            font-size: 0.9em;
-            margin-top: -8px;
-            margin-bottom: 10px;
-        }
-        .is-invalid {
-            border-color: #dc3545;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Edit Kategori</h1>
+@extends('layouts.app')
 
-        <form action="{{ route('kategoris.update', $kategori->id_kategori) }}" method="POST">
-            @csrf
-            @method('PUT')
-            
-            <div class="form-group">
-                <label for="nama_kategori">Nama Kategori</label>
-                <input type="text" 
-                       id="nama_kategori" 
-                       name="nama_kategori" 
-                       value="{{ old('nama_kategori', $kategori->nama_kategori) }}" 
-                       class="@error('nama_kategori') is-invalid @enderror">
-                @error('nama_kategori')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
-            </div>
+@section('title', 'Edit Kategori')
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Update Kategori</button>
-                <a href="{{ route('kategoris.index') }}" class="btn btn-secondary">Cancel</a>
+@section('content')
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h3 class="text-center my-4">Edit Kategori</h3>
+                <hr>
             </div>
-        </form>
+            <div class="card border-0 shadow-sm rounded">
+                <div class="card-body">
+                    <form action="{{ route('kategoris.update', $kategori->id_kategori) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="nama_kategori">Nama Kategori</label>
+                            <input type="text" 
+                                   id="nama_kategori" 
+                                   name="nama_kategori" 
+                                   value="{{ old('nama_kategori', $kategori->nama_kategori) }}" 
+                                   class="form-control @error('nama_kategori') is-invalid @enderror" 
+                                   placeholder="Nama Kategori">
+                            @error('nama_kategori')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
+                        <button type="reset" class="btn btn-md btn-warning">RESET</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</div>
+@endsection

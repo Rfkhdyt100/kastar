@@ -15,6 +15,7 @@ class CreateProduksTable extends Migration
             $table->integer('stok');
             $table->unsignedBigInteger('id_kategori');
             $table->timestamps();
+            $table->foreign('id_kategori')->references('id_kategori')->on('kategoris')->onDelete('cascade');
         });
     }
 

@@ -5,19 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Stok extends Model
+class PembelianProduk extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_stok';
+    protected $primaryKey = 'id_pembelian_produk';
 
     protected $fillable = [
+        'id_pembeli',
         'id_produk',
-        'tanggal_update_stok',
-        'stok_awal',
-        'stok_akhir',
-        'keterangan',
+        'jumlah',
     ];
+
+    public function pembeli()
+    {
+        return $this->belongsTo(Pembeli::class, 'id_pembeli', 'id_pembeli');
+    }
 
     public function produk()
     {

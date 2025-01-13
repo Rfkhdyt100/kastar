@@ -3,7 +3,6 @@
 <head>
     <title>Kasir Pintar - @yield('title', 'Dashboard')</title>
     
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
     @stack('styles')
@@ -70,7 +69,7 @@
         }
         
         .nav-item a:hover {
-            background-color: #1abc9c;
+            background-color:rgb(26, 107, 188);
             color: white;
         }
         
@@ -92,13 +91,13 @@
         }
         
         .btn-custom {
-            background-color: #1abc9c;
+            background-color:rgb(26, 120, 188);
             color: white;
             border-radius: 5px;
         }
         
         .btn-custom:hover {
-            background-color: #16a085;
+            background-color:rgb(22, 70, 160);
         }
         
         footer {
@@ -114,7 +113,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="sidebar">
+        < class="sidebar">
             <div class="sidebar-header">
                 <a href="/" class="sidebar-brand">
                     Kasir Pintar
@@ -128,9 +127,9 @@
                     </a>
                 </div>
                 <div class="nav-item {{ request()->is('users*') ? 'active' : '' }}">
-                    <a href="#">
+                    <a href="{{ route('userss.index') }}">
                         <i>👤</i>
-                        User
+                        Pelanggan
                     </a>
                 </div>
                 <div class="nav-item {{ request()->is('produks*') ? 'active' : '' }}"> 
@@ -141,6 +140,18 @@
                     <a href="{{ route('kategoris.index') }}"> 
                         <i>📂</i> Kategori </a> 
                 </div>
+                <div class="nav-item {{ request()->is('stoks*') ? 'active' : '' }}"> 
+                    <a href="{{ route('stoks.index') }}"> 
+                        <i>🧾</i> Stok </a> 
+                </div>
+                <div class="nav-item {{ request()->is('diskons*') ? 'active' : '' }}"> 
+                    <a href="{{ route('diskons.index') }}"> 
+                        <i>🏷️</i> Diskon </a> 
+                </div>
+                <div class="nav-item {{ request()->is('shifts*') ? 'active' : '' }}"> 
+                    <a href="{{ route('shifts.index') }}"> 
+                        <i>⏰</i> Shift </a> 
+                </div>
             </nav>
         </div>
 
@@ -150,7 +161,6 @@
         </div>
     </div>
 
-    <!-- jQuery and Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     

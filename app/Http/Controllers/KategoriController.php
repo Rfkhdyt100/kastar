@@ -30,13 +30,11 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate incoming request data
         $request->validate([
             'nama_kategori' => 'required|string|max:255',
         ]);
 
         try {
-            // Create a new category record
             Kategori::create([
                 'nama_kategori' => $request->nama_kategori,
             ]);
@@ -44,7 +42,7 @@ class KategoriController extends Controller
             return redirect()->route('kategoris.index')
                 ->with('success', 'Kategori added successfully.');
         } catch (\Exception $e) {
-            Log::error($e->getMessage()); // Log the error
+            Log::error($e->getMessage()); 
             return redirect()->back()->withErrors(['error' => 'Failed to add kategori.']);
         }
     }

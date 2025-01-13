@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Stok extends Model
+class Diskon extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_stok';
+    protected $primaryKey = 'id_diskon';
 
     protected $fillable = [
+        'nama_diskon',
+        'persentase_diskon',
+        'tanggal_mulai_diskon',
+        'tanggal_berakhir_diskon',
         'id_produk',
-        'tanggal_update_stok',
-        'stok_awal',
-        'stok_akhir',
-        'keterangan',
     ];
 
     public function produk()

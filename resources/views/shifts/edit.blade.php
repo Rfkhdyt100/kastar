@@ -1,30 +1,30 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Stok')
+@section('title', 'Edit Shift')
 
 @section('content')
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
             <div>
-                <h3 class="text-center my-4">Edit Stok</h3>
+                <h3 class="text-center my-4">Edit Shift</h3>
                 <hr>
             </div>
             <div class="card border-0 shadow-sm rounded">
                 <div class="card-body">
-                    <form action="{{ route('stoks.update', $stok->id_stok) }}" method="POST">
+                    <form action="{{ route('shifts.update', $shift->id_shift) }}" method="POST">
                         @csrf
                         @method('PUT')
 
                         <div class="form-group">
-                            <label class="font-weight-bold" for="id_produk">ID Produk</label>
+                            <label class="font-weight-bold" for="id_user">ID User</label>
                             <input type="number" 
-                                   id="id_produk" 
-                                   name="id_produk" 
-                                   value="{{ old('id_produk', $stok->id_produk) }}" 
-                                   class="form-control @error('id_produk') is-invalid @enderror" 
-                                   placeholder="ID Produk">
-                            @error('id_produk')
+                                   id="id_user" 
+                                   name="id_user" 
+                                   value="{{ old('id_user', $shift->id_user) }}" 
+                                   class="form-control @error('id_user') is-invalid @enderror" 
+                                   placeholder="ID User">
+                            @error('id_user')
                                 <div class="alert alert-danger mt-2">
                                     {{ $message }}
                                 </div>
@@ -32,14 +32,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="font-weight-bold" for="tanggal_update_stok">Tanggal Update Stok</label>
+                            <label class="font-weight-bold" for="tanggal_mulai">Tanggal Mulai</label>
                             <input type="date" 
-                                   id="tanggal_update_stok" 
-                                   name="tanggal_update_stok" 
-                                   value="{{ old('tanggal_update_stok', $stok->tanggal_update_stok) }}" 
-                                   class="form-control @error('tanggal_update_stok') is-invalid @enderror" 
-                                   placeholder="Tanggal Update Stok">
-                            @error('tanggal_update_stok')
+                                   id="tanggal_mulai" 
+                                   name="tanggal_mulai" 
+                                   value="{{ old('tanggal_mulai', $shift->tanggal_mulai) }}" 
+                                   class="form-control @error('tanggal_mulai') is-invalid @enderror" 
+                                   placeholder="Tanggal Mulai">
+                            @error('tanggal_mulai')
                                 <div class="alert alert-danger mt-2">
                                     {{ $message }}
                                 </div>
@@ -47,14 +47,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="font-weight-bold" for="stok_awal">Stok Awal</label>
-                            <input type="number" 
-                                   id="stok_awal" 
-                                   name="stok_awal" 
-                                   value="{{ old('stok_awal', $stok->stok_awal) }}" 
-                                   class="form-control @error('stok_awal') is-invalid @enderror" 
-                                   placeholder="Stok Awal">
-                            @error('stok_awal')
+                            <label class="font-weight-bold" for="waktu_mulai">Waktu Mulai</label>
+                            <input type="time" 
+                                   id="waktu_mulai" 
+                                   name="waktu_mulai" 
+                                   value="{{ old('waktu_mulai', $shift->waktu_mulai) }}" 
+                                   class="form-control @error('waktu_mulai') is-invalid @enderror" 
+                                   placeholder="Waktu Mulai">
+                            @error('waktu_mulai')
                                 <div class="alert alert-danger mt-2">
                                     {{ $message }}
                                 </div>
@@ -62,14 +62,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="font-weight-bold" for="stok_akhir">Stok Akhir</label>
-                            <input type="number" 
-                                   id="stok_akhir" 
-                                   name="stok_akhir" 
-                                   value="{{ old('stok_akhir', $stok->stok_akhir) }}" 
-                                   class="form-control @error('stok_akhir') is-invalid @enderror" 
-                                   placeholder="Stok Akhir">
-                            @error('stok_akhir')
+                            <label class="font-weight-bold" for="waktu_selesai">Waktu Selesai</label>
+                            <input type="time" 
+                                   id="waktu_selesai" 
+                                   name="waktu_selesai" 
+                                   value="{{ old('waktu_selesai', $shift->waktu_selesai) }}" 
+                                   class="form-control @error('waktu_selesai') is-invalid @enderror" 
+                                   placeholder="Waktu Selesai">
+                            @error('waktu_selesai')
                                 <div class="alert alert-danger mt-2">
                                     {{ $message }}
                                 </div>
@@ -81,7 +81,7 @@
                             <textarea id="keterangan" 
                                       name="keterangan" 
                                       class="form-control @error('keterangan') is-invalid @enderror" 
-                                      placeholder="Keterangan">{{ old('keterangan', $stok->keterangan) }}</textarea>
+                                      placeholder="Keterangan">{{ old('keterangan', $shift->keterangan) }}</textarea>
                             @error('keterangan')
                                 <div class="alert alert-danger mt-2">
                                     {{ $message }}

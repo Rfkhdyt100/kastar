@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory; 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Http\Models\Penjualan;
+
 
 class User extends Model
 {
@@ -20,7 +20,12 @@ class User extends Model
             'password', 
         ];
 
-        // public function penjualans() { 
-        //     return $this->hasMany(Penjualan::class, 'id_user'); 
-        // }
-}
+        public function penjualans() 
+        { 
+            return $this->hasMany(Penjualan::class, 'id_user', 'id_user'); 
+        } 
+        public function shifts() 
+        { 
+            return $this->hasMany(Shift::class, 'id_user', 'id_user');
+        }
+    }

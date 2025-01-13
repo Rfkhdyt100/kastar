@@ -50,7 +50,7 @@ class ProdukController extends Controller
             return redirect()->route('produks.index')
                 ->with('success', 'Produk added successfully.');
         } catch (\Exception $e) {
-            Log::error($e->getMessage()); // Log the error
+            Log::error($e->getMessage());
             return redirect()->back()->withErrors(['error' => 'Failed to add produk.']);
         }
     }
