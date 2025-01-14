@@ -33,7 +33,7 @@ class PembeliController extends Controller
         $request->validate([
             'custumor' => 'required|string|max:255',
             'tanggal_beli' => 'required|date',
-            'waktu_beli' => 'required|date_format:H:i',
+            'waktu_beli' => 'required|time',
             'metode_pembayaran' => 'required|string|max:255',
             'produk' => 'required|integer',
             'bayar' => 'required|numeric',
@@ -67,7 +67,7 @@ class PembeliController extends Controller
         $validatedData = $request->validate([
             'custumor' => 'required|string|max:255',
             'tanggal_beli' => 'required|date',
-            'waktu_beli' => 'required|date_format:H:i',
+            'waktu_beli' => 'required|time',
             'metode_pembayaran' => 'required|string|max:255',
             'produk' => 'required|integer',
             'bayar' => 'required|numeric',

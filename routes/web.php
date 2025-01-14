@@ -8,6 +8,15 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\StokController;
 use App\Http\Controllers\DiskonController;
 use App\Http\Controllers\ShiftController;
+use App\Http\Controllers\PembeliController;
+use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\BarangPenjualanController;
+use App\Http\Controllers\PembelianProdukController;
+use App\Http\Controllers\LaporanPenjualanController;
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -57,3 +66,18 @@ Route::resource('diskons', DiskonController::class);
 // shift
 
 Route::resource('shifts', ShiftController::class);
+
+// trnsaksi
+Route::resource('pembelis', PembeliController::class);
+
+Route::resource('penjualans', PenjualanController::class); 
+
+Route::resource('pembayarans', PembayaranController::class);
+
+Route::resource('pembelian_produks', PembelianProdukController::class);
+
+Route::resource('barangpenjualan', BarangPenjualanController::class);
+
+Route::resource('laporan_penjualans', LaporanPenjualanController::class);
+
+

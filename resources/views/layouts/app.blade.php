@@ -113,7 +113,7 @@
 </head>
 <body>
     <div class="wrapper">
-        < class="sidebar">
+        <div class="sidebar">
             <div class="sidebar-header">
                 <a href="/" class="sidebar-brand">
                     Kasir Pintar
@@ -127,7 +127,7 @@
                     </a>
                 </div>
                 <div class="nav-item {{ request()->is('users*') ? 'active' : '' }}">
-                    <a href="{{ route('userss.index') }}">
+                    <a href="{{ route('users.index') }}">
                         <i>👤</i>
                         Pelanggan
                     </a>
@@ -152,6 +152,37 @@
                     <a href="{{ route('shifts.index') }}"> 
                         <i>⏰</i> Shift </a> 
                 </div>
+                <!-- <div class="dropdown"> 
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false"> 
+                        TRANSAKSI <span id="arrow">▽</span> 
+                    </button> 
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> 
+                        <a class="dropdown-item" href="{{ route('pembelis.index') }}">Pembeli</a> 
+                        <a class="dropdown-item" href="{{ route('penjualans.index') }}">Penjualan</a>
+                        <a class="dropdown-item" href="{{ route('pembayarans.index') }}">Pembayaran</a> 
+                        <a class="dropdown-item" href="{{ route('barangpenjualan.index') }}">Barang Penjualan</a> 
+                        <a class="dropdown-item" href="{{ route('pembelian_produks.index') }}">Pembelian Produk</a> 
+                        <a class="dropdown-item" href="{{ route('laporan_penjualans.index') }}">Laporan Penjualan</a> 
+                    </div>
+                </div> -->
+                <div class="nav-item {{ request()->is('pembelis*') ? 'active' : '' }}"> 
+                    <a href="{{ route('pembelis.index') }}"> <i></i> Pembeli </a> 
+                </div> 
+                <div class="nav-item {{ request()->is('penjualans*') ? 'active' : '' }}"> 
+                    <a href="{{ route('penjualans.index') }}"> <i></i> Penjualan </a> 
+                </div> 
+                <div class="nav-item {{ request()->is('pembayarans*') ? 'active' : '' }}"> 
+                    <a href="{{ route('pembayarans.index') }}"> <i></i> Pembayaran </a> 
+                </div> 
+                <div class="nav-item {{ request()->is('barangpenjualan*') ? 'active' : '' }}"> 
+                    <a href="{{ route('barangpenjualan.index') }}"> <i></i> Barang Penjualan </a> 
+                </div> 
+                <div class="nav-item {{ request()->is('pembelian_produks*') ? 'active' : '' }}"> 
+                    <a href="{{ route('pembelian_produks.index') }}"> <i></i> Pembelian Produk </a> 
+                </div> 
+                <div class="nav-item {{ request()->is('laporan_penjualans*') ? 'active' : '' }}"> 
+                    <a href="{{ route('laporan_penjualans.index') }}"> <i></i> Laporan Penjualan </a> 
+                </div>
             </nav>
         </div>
 
@@ -163,7 +194,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
+
     @stack('scripts')
 </body>
 </html>
