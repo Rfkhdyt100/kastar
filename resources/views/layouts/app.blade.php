@@ -129,7 +129,7 @@
                 <div class="nav-item {{ request()->is('users*') ? 'active' : '' }}">
                     <a href="{{ route('users.index') }}">
                         <i>👤</i>
-                        Pelanggan
+                        User
                     </a>
                 </div>
                 <div class="nav-item {{ request()->is('produks*') ? 'active' : '' }}"> 
